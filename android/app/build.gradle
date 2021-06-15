@@ -1,0 +1,84 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+android {
+    compileSdkVersion 30
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.example.mix_stack_manager"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'moduler'  //签名的别名
+            keyPassword '123456'   //签名密码
+            storeFile file('../moduler.jks')  //签名存放路径（这里写的绝对路径不好，多人开发要选择相对路径）
+            storePassword '123456'  //签名密码
+        }
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+            useProguard true
+            /* 混淆规则配置文件 */
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation "com.google.android.material:material:1.2.0"
+    implementation "androidx.appcompat:appcompat:1.3.0-beta01"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+
+    implementation 'com.blankj:utilcodex:1.30.6'
+    implementation 'com.google.code.gson:gson:2.8.7'
+}

@@ -1,0 +1,1 @@
+-keep class com.example.mix_stack_manager.bean.** { *; }

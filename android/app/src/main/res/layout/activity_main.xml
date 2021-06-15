@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/CommonToolbarStyle"
+        android:elevation="1dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="混合栈跳转"
+        app:titleTextColor="#FFFFFF"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/buttonInitFlutter"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:text="init Flutter Engine"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <Button
+        android:id="@+id/startFlutter"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="Open HostActivity"
+        app:layout_constraintTop_toBottomOf="@id/buttonInitFlutter" />
+
+    <Button
+        android:id="@+id/releaseFlutter"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="Release Flutter Engine"
+        app:layout_constraintTop_toBottomOf="@id/startFlutter" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
