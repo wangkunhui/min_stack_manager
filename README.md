@@ -2,6 +2,9 @@
 
 A Flutter project to solve the mix stack jump.
 
+## Demo
+![](/Users/wang/Workspace/FlutterProject/mix_stack_manager/imgs/demo.png)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
