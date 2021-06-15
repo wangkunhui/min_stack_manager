@@ -3,7 +3,7 @@
 A Flutter project to solve the mix stack jump.
 
 ## Demo
-![](/Users/wang/Workspace/FlutterProject/mix_stack_manager/imgs/demo.png)
+![](./imgs/demo.png)
 
 ## Getting Started
 
